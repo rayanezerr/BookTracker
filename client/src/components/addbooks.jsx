@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import "./addBooks.css"
 import { debounce } from "lodash";
-const url = "http://localhost:3000";
+const url = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const AddBook = ({ token }) => {
   const [query, setQuery] = useState("");

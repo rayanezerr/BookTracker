@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import "./login.css";
 
-const url = "http://localhost:3000";
+const url = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const Login = ({ onLogin }) => {
   const [isRegistering, setIsRegistering] = useState(false);

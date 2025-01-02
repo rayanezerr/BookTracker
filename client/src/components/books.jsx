@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Book from "./bookcard";
 import "./books.css";
 
-const url = "http://localhost:3000";
+const url = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const Books = ({ token }) => {
   const [books, setBooks] = useState([]);
