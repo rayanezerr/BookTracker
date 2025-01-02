@@ -1,0 +1,90 @@
+.filter-bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.filter-select:hover {
+  border-color: #007bff;
+}
+
+.my-books-container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.my-books-container h2 {
+  text-align: center;
+  color: #5a5a5a;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.book-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.book-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.book-card .book-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.book-card .book-info h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.book-card .book-info p {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.book-card .book-info .status,
+.book-card .book-info .rating {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.book-card .book-info .rating {
+  margin-top: 5px;
+  font-weight: bold;
+}

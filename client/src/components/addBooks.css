@@ -1,0 +1,105 @@
+.add-book-container {
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.add-book-form {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-book-form h2 {
+  text-align: center;
+}
+
+.add-book-form input[type="text"],
+.add-book-form input[type="number"],
+.add-book-form select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.add-book-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #5a5a5a;
+}
+
+.add-book-form button {
+  width: 100%;
+  background: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-book-form button:hover {
+  background: #0056b3;
+}
+
+.add-book-form .suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+
+.add-book-form .suggestions-list.empty {
+  border: 0px;
+}
+
+.add-book-form .suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.add-book-form .suggestions-list li:hover {
+  background: #e9ecef;
+}
+
+.add-book-form .suggestions-list li:last-child {
+  border-bottom: none;
+}
+
+.add-book-form h3,
+.add-book-details {
+  margin-top: 20px;
+  color: #5a5a5a;
+  justify-content: center;
+  display: flex;
+}
+
+.add-book-form p {
+  margin: 10px 0;
+  color: #333;
+}
+
+.add-book-image {
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
