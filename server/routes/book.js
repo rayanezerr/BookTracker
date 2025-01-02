@@ -1,4 +1,5 @@
 const { HTTP_STATUS } = require("../utils/http");
+const { fetchBookFromOpenLibrary } = require("../utils/openlibrarycalls");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 
@@ -27,14 +28,13 @@ class BookRouter {
     this.router.use(extractUsername);
 
     this.router.post('/add', async (req, res) => {
-      const { title, author, status, rating } = req.body;
-      if (!title) {
-        return res.status(HTTP_STATUS.BAD_REQUEST).json({ message: "Title is required" });
+      const { query, status, rating } = req.body;
+      if (!query) {
+        return res.status(HTTP_STATUS.BAD_REQUEST).json({ message: "Query is required" });
       }
-
       try {
-        console.log(req.username);
-        const newBook = await this.bookManager.addBook(req.username, { title, author, status, rating });
+        const bookData = await fetchBookFromOpenLibrary(query);
+        const newBook = await this.bookManager.addBook(req.username, { ...bookData, status, rating });
         return res.status(HTTP_STATUS.CREATED).json({ message: "Book added", book: newBook });
       } catch (error) {
         return res.status(HTTP_STATUS.CONFLICT).json({ message: error.message });

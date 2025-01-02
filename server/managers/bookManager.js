@@ -6,12 +6,10 @@ class BookManager {
   async addBook(username, book) {
     try {
       const existingBook = await this.dbManager.getBookById(username, book.title);
-      console.log(existingBook);
       if (existingBook) throw new Error("Book already exists");
 
-      const newBook = { ...book};
-      await this.dbManager.addBook(username, newBook);
-      return newBook;
+      await this.dbManager.addBook(username, book);
+      return book;
     } catch (error) {
       console.error('Error adding book:', error);
       throw new Error('Error adding book');
