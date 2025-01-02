@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const extractUsername = (req, res, next) => {
   const token = req.get('Authorization')?.split(' ')[1];
+  console.log(token);
 
   if (!token) return res.status(HTTP_STATUS.BAD_REQUEST).json({ message: "No token provided" });
 
