@@ -1,9 +1,13 @@
 .add-book-container {
-  background-color: #f8f9fa;
-  color: #333;
+
   margin: 0;
-  padding: 0;
+  flex: 1;
   line-height: 1.6;
+  width: 600px;
+  height: 40vh;
+  margin: 0 auto;
+  padding: 20px;
+  
 }
 
 .add-book-form {
@@ -102,4 +106,10 @@
   border-radius: 8px;
   display: block;
   margin: 0 auto;
+}
+
+.add-book-page {
+  display: flex;
+  height: 92vh;
+  font-family: Arial, sans-serif;
 }

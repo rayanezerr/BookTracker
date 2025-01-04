@@ -1,0 +1,15 @@
+.trending-books {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  
+}
+
+.book-card {
+  padding: 15px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #dcdcdc;
+  text-align: center;
+  transition: transform 0.2s ease;
+}

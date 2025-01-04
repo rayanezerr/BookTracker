@@ -1,11 +1,18 @@
 .login-container {
-  max-width: 400px;
+  width: 600px;
+  height: 40vh;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+.login-page {
+  display: flex;
+  height: 92vh;
+  font-family: Arial, sans-serif;
 }
 
 .login-container form {
@@ -29,18 +36,20 @@
 }
 
 .login-container button {
-  padding: 12px;
-  background-color: #4caf50;
-  color: white;
-  font-size: 1rem;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 20px;
   border: none;
-  border-radius: 5px;
+  margin: 1vh auto;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .login-container button:hover {
-  background-color: #45a049;
+  background-color: #007bff;
+  color: #fff;
 }
 
 .login-container .switch-btn {
@@ -63,4 +72,13 @@
   color: red;
   font-size: 0.9rem;
   margin-top: 15px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    width: 50%;
+    height: 50%;
+  }
 }

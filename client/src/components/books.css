@@ -20,24 +20,29 @@
 }
 
 .my-books-container {
-  margin: 0 auto;
+  flex: 1;
   padding: 20px;
-  max-width: 600px;
-  background: #fff;
-  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.my-books-page {
+  display: flex;
+  height: 92vh;
+  font-family: Arial, sans-serif;
 }
 
 .my-books-container h2 {
   text-align: center;
-  color: #5a5a5a;
 }
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px 0;
 }
 
 .book-card {
@@ -55,36 +60,31 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.book-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-.book-card .book-info {
-  padding: 15px;
+.login-text {
+  display: flex;
+  flex: 1;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 }
 
-.book-card .book-info h3 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.book-card .book-info p {
-  font-size: 1rem;
-  color: #777;
-  margin-bottom: 10px;
-}
-
-.book-card .book-info .status,
-.book-card .book-info .rating {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.book-card .book-info .rating {
-  margin-top: 5px;
+.login-text a {
+  margin: 0 9px;
+  text-decoration: none;
+  color: #007bff;
   font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.login-text a:hover {
+  color: #0056b3;
+}
+
+@media screen and (max-width: 620px) {
+  .login-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
 }
