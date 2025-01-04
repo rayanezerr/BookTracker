@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Book from "./bookcard";
 import "./books.css";
 import Sidebar from "./sidebar";
+import EditBookPopup from "./editBookPopup";
 
 const url = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -11,6 +12,8 @@ const Books = () => {
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [filter, setFilter] = useState("All");
   const [logedIn, setLogedIn] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null); 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -42,7 +45,33 @@ const Books = () => {
     } else {
       setFilteredBooks(books.filter((book) => book.status === filter));
     }
-  }, [filter, books]);
+  }, [filter, books, isEditing]);
+
+  const handleEdit = (book) => {
+    setSelectedBook(book);
+    setIsEditing(true);
+  };
+
+  const handleUpdate = (updatedBook) => {
+    setBooks((prevBooks) =>
+      prevBooks.map((b) => {
+        const wewe = b.title === updatedBook.title ? updatedBook : b
+        console.log(wewe)
+        return wewe
+      }
+      )
+    );
+    console.log(books);
+    setFilteredBooks((prevFilteredBooks) =>
+      prevFilteredBooks.map((b) =>
+        b.title === updatedBook.title ? updatedBook : b
+      )
+    );
+
+    setIsEditing(false);
+  };
+
+
 
   if (!token || !logedIn) return (
     <div className="my-books-page">
@@ -71,12 +100,20 @@ const Books = () => {
 
         <div className="books-grid">
           {filteredBooks.map((book) => (
-            <div className="book-card" key={book.id}>
-              <Book key={book.id} book={book} />
+            <div className="book-card" key={book.title}>
+              <Book key={book.title} book={book} onEdit={() => handleEdit(book)} />
             </div>
           ))}
         </div>
       </div>
+      {isEditing && selectedBook && (
+        <EditBookPopup
+          book={selectedBook}
+          isOpen={isEditing}
+          onClose={() => setIsEditing(false)}
+          onUpdate={handleUpdate}
+        />
+      )}
     </div>
   );
 };
