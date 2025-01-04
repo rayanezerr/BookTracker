@@ -15,7 +15,7 @@ const AddBook = () => {
   const [rating, setRating] = useState("");
   const token = localStorage.getItem("token");
 
-  const { logedIn } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
 
   const abortControllerRef = useRef(null);
 
@@ -77,7 +77,7 @@ const AddBook = () => {
     }
   }, [query]);
 
-  if (!token || !logedIn) return (
+  if (!token || !isAuthenticated) return (
     <div className="my-books-page">
       <Sidebar />
       <h1 className="login-text">You must <Link to="/login"> Login</Link> to view this page</h1>
