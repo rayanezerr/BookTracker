@@ -45,7 +45,7 @@ const EditBookPopup = ({ book, isOpen, onClose, onUpdate, onDelete }) => {
         rating: rating ? parseInt(rating) : null,
       };
 
-      const response = await fetch(`${url}/books/update/${book.title}`, {
+      const response = await fetch(`${url}/books/update/${book.isbn}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

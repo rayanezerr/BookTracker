@@ -58,7 +58,6 @@ class BookRouter {
       }
 
       try {
-
         const updatedBook = await this.bookManager.updateBook(req.username, bookId, updateFields);
         return res.status(HTTP_STATUS.OK).json({ message: "Book updated", book: updatedBook });
       } catch (error) {

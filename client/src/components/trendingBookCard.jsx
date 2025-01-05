@@ -6,6 +6,11 @@ const TrendingBookCard= ({ book, isbn }) => {
   const author = book.author_name && book.author_name.length > 0 ? book.author_name[0] : "Unknown Author";
   const token = localStorage.getItem("token");
   const handleAddBook = async () => {
+
+    if (!token) {
+      alert("You must be logged in to add a book");
+      return;
+    }
     try {
       const response = await fetch(`${url}/books/add`, {
         method: "POST",
@@ -14,7 +19,7 @@ const TrendingBookCard= ({ book, isbn }) => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          query: book.title,
+          query: isbn,
           status: "Plan to read",
           rating: null
         }),

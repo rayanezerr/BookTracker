@@ -5,7 +5,7 @@ class BookManager {
 
   async addBook(username, book) {
     try {
-      const existingBook = await this.dbManager.getBookById(username, book.title);
+      const existingBook = await this.dbManager.getBookById(username, book.isbn[0]);
       if (existingBook) throw new Error("Book already exists");
 
       await this.dbManager.addBook(username, book);
@@ -16,12 +16,12 @@ class BookManager {
     }
   }
 
-  async updateBook(username, bookTitle, updateFields) {
+  async updateBook(username, bookIsbn, updateFields) {
     try {
-      const result = await this.dbManager.updateBook(username, bookTitle, updateFields);
+      const result = await this.dbManager.updateBook(username, bookIsbn, updateFields);
   
       if (!result) throw new Error("Book not found");
-      return result.books.find(b => b.title === bookTitle);
+      return result.books.find(b => b.isbn === bookIsbn);
     } catch (error) {
       console.error('Error updating book:', error);
       throw new Error('Error updating book');
@@ -38,9 +38,9 @@ class BookManager {
     }
   }
 
-  async getBookById(username, bookTitle) {
+  async getBookById(username, bookIsbn) {
     try {
-      const book = await this.dbManager.getBookById(username, bookTitle);
+      const book = await this.dbManager.getBookById(username, bookIsbn);
       if (!book) throw new Error("Book not found");
 
       return book;

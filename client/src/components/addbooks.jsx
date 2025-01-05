@@ -56,7 +56,7 @@ const AddBook = () => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          query: selectedBook.title,
+          query: selectedBook.isbn[0],
           status,
           rating: rating ? parseInt(rating) : null,
         }),

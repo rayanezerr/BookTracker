@@ -28,9 +28,9 @@ class DBManager {
     );
   }
 
-  async updateBook(username, bookTitle, updateFields) {
+  async updateBook(username, bookIsbn, updateFields) {
     const result = await this.userCollection.findOneAndUpdate(
-      { username, 'books.title': bookTitle },
+      { username, 'books.isbn': bookIsbn },
       { $set: updateFields },
       { returnDocument: 'after' }
     );
@@ -43,9 +43,9 @@ class DBManager {
     return user.books || [];
   }
 
-  async getBookById(username, bookTitle) {
+  async getBookById(username, bookIsbn) {
     const user = await this.findUser(username);
-    return user.books?.find(b => b.title === bookTitle) || null;
+    return user.books?.find(b => b.isbn === bookIsbn) || null;
   }
 
   async deleteBook(username, bookIsbn) {

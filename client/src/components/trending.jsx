@@ -28,6 +28,7 @@ const TrendingBooks = () => {
         books.map((book) => {
           const isbn = book.availability && book.availability.isbn ? book.availability.isbn : null;
           return (
+            isbn &&
             <div key={book.key} className="book-card">
               <TrendingBookCard book={book} isbn={isbn} />
             </div>
