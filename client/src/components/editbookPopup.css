@@ -46,7 +46,9 @@
 
 .popup-buttons {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap:10px;
   margin-top: 20px;
 }
 
@@ -59,9 +61,7 @@
   cursor: pointer;
 }
 
-
-
-.save-button, .cancel-button{
+.save-button, .cancel-button, .delete-button {
   color: #007bff;
   background-color: #ccc;
   border: none;
@@ -76,7 +76,12 @@
 }
 
 .cancel-button:hover {
-  background-color: #bbb;
+  background-color: #9c9c9c;
+}
+
+.delete-button:hover {
+  background-color: #dc3545;
+  color: #fff;
 }
 
 @media screen and (max-width: 620px) {

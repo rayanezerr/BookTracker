@@ -84,6 +84,16 @@ class BookRouter {
         return res.status(HTTP_STATUS.NOT_FOUND).json({ message: error.message });
       }
     });
+
+    this.router.delete('/:bookId', async (req, res) => {
+      const { bookId } = req.params;
+      try {
+        await this.bookManager.deleteBook(req.username, bookId);
+        return res.status(HTTP_STATUS.NO_CONTENT).send();
+      } catch (error) {
+        return res.status(HTTP_STATUS.NOT_FOUND).json({ message: error.message });
+      }
+    });
   }
 }
 

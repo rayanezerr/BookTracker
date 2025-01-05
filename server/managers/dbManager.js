@@ -47,6 +47,16 @@ class DBManager {
     const user = await this.findUser(username);
     return user.books?.find(b => b.title === bookTitle) || null;
   }
+
+  async deleteBook(username, bookIsbn) {
+    const result = await this.userCollection.findOneAndUpdate(
+      { username },
+      { $pull: { books: { isbn: bookIsbn } } },
+      { returnDocument: 'after' }
+    );
+
+    return result;
+  }
 }
 
 module.exports = DBManager;

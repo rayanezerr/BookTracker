@@ -71,6 +71,19 @@ const Books = () => {
     setIsEditing(false);
   };
 
+  const handleDelete = (deletedBook) => {
+    setBooks((prevBooks) =>
+      prevBooks.filter((b) => b.title !== deletedBook.title)
+    );
+
+    console.log(books);
+    setFilteredBooks((prevFilteredBooks) =>
+      prevFilteredBooks.filter((b) => b.title !== deletedBook.title)
+    );
+
+    setIsEditing(false);
+  };
+
 
 
   if (!token || !logedIn) return (
@@ -112,6 +125,7 @@ const Books = () => {
           isOpen={isEditing}
           onClose={() => setIsEditing(false)}
           onUpdate={handleUpdate}
+          onDelete={handleDelete}
         />
       )}
     </div>

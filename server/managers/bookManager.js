@@ -49,6 +49,18 @@ class BookManager {
       throw new Error('Error retrieving book');
     }
   }
+
+  async deleteBook(username, bookIsbn) {
+    try {
+      const result = await this.dbManager.deleteBook(username, bookIsbn);
+      if (!result) throw new Error("Book not found");
+
+      return result;
+    } catch (error) {
+      console.error('Error deleting book:', error);
+      throw new Error('Error deleting book');
+    }
+  }
 }
 
 module.exports = BookManager;

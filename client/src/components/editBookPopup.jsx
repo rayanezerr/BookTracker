@@ -3,7 +3,7 @@ import "./editbookPopup.css";
 const url = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 
-const EditBookPopup = ({ book, isOpen, onClose, onUpdate }) => {
+const EditBookPopup = ({ book, isOpen, onClose, onUpdate, onDelete }) => {
   const [status, setStatus] = useState("");
   const [rating, setRating] = useState("");
   const token = localStorage.getItem("token");
@@ -14,6 +14,27 @@ const EditBookPopup = ({ book, isOpen, onClose, onUpdate }) => {
       setRating(book.rating || "");
     }
   }, [isOpen, book]);
+
+  const handleDelete = async (e) => { 
+    e.preventDefault();
+    const confirmDelete = window.confirm("Are you sure you want to delete this book?");
+    if (!confirmDelete) return;
+    try {
+      const response = await fetch(`${url}/books/${book.isbn}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to delete book");
+      onDelete(book);
+      onClose();
+    }
+    catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -84,11 +105,14 @@ const EditBookPopup = ({ book, isOpen, onClose, onUpdate }) => {
             />
           </label>
           <div className="popup-buttons">
-            <button type="button" onClick={onClose} className="cancel-button">
-              Cancel
+            <button type="button" onClick={handleDelete} className="delete-button">
+              Delete book
             </button>
             <button type="submit" className="save-button">
-              Save
+              Save changes
+            </button>
+            <button type="button" onClick={onClose} className="cancel-button">
+              Cancel changes
             </button>
           </div>
         </form>
