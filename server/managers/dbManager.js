@@ -22,6 +22,11 @@ class DBManager {
   }
 
   async addBook(username, book) {
+      
+    const bookExists = await this.userCollection.findOne({ username, 'books.isbn': book.isbn });
+    if (bookExists) throw new Error('Book already exists');
+    
+
     await this.userCollection.updateOne(
       { username },
       { $push: { books: book } }
